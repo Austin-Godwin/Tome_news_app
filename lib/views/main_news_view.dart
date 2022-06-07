@@ -138,7 +138,8 @@ class _MainNewsViewState extends State<MainNewsView> {
                   // left: 15,
                   child: IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pop(context, allMethods.bookMarkList);
+                      print(allMethods.bookMarkList.length);
                     },
                     icon: const Icon(
                       Icons.chevron_left_rounded,
