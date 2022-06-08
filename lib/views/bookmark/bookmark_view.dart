@@ -6,6 +6,7 @@ import '../../utils/text.dart';
 import '../main_news_view.dart';
 
 class BookmarkView extends StatefulWidget {
+  // final List<Map<String, dynamic>> bookMarks;
   const BookmarkView({Key? key}) : super(key: key);
 
   @override
