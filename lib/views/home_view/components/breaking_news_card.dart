@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
 import '../../../utils/text.dart';
 
 class BreakingNewsCard extends StatelessWidget {
@@ -20,7 +19,7 @@ class BreakingNewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 215,
       child: InkWell(
         onTap: onTap,
@@ -45,7 +44,7 @@ class BreakingNewsCard extends StatelessWidget {
             const SizedBox(height: 5.0),
             Padding(
               padding: const EdgeInsets.only(left: 15.0),
-              child: Container(
+              child: SizedBox(
                 width: 215,
                 height: 60,
                 child: AppText.body1(
