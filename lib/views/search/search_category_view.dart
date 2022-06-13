@@ -143,6 +143,7 @@ class _SearchCategoryViewState extends State<SearchCategoryView> {
                                 isBusy = true;
                                 selectedindex = index;
                                 allMethods.getNewsSearch(
+                                    context: context,
                                     search: tabList[index],
                                     toSetState: () {
                                       setState(() {});

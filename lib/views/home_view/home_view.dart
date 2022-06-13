@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tomel_news_app/views/bookmark/bookmark_view.dart';
-import 'package:tomel_news_app/views/news_home_view.dart';
+import 'package:tomel_news_app/views/home_view/news_home_view.dart';
 import 'package:tomel_news_app/views/search/search_category_view.dart';
 
 class HomeView extends StatefulWidget {

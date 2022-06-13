@@ -77,6 +77,7 @@ class _SearchViewState extends State<SearchView> {
                               onPressed: () {
                                 setState(() {
                                   allMethods.getNewsSearch(
+                                      context: context,
                                       search: searchController.text,
                                       toSetState: () {
                                         setState(() {});

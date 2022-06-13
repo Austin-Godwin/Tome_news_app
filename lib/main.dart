@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tomel_news_app/for_test.dart';
 import 'package:tomel_news_app/utils/theme.dart';
-import 'package:tomel_news_app/views/home_view.dart';
+import 'views/home_view/home_view.dart';
 
 void main() {
   runApp(const MyApp());

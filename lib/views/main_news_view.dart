@@ -34,7 +34,7 @@ class MainNewsView extends StatefulWidget {
 
 class _MainNewsViewState extends State<MainNewsView> {
   bool onClicked = false;
-  final allMethods = AllMethods();
+  // final allMethods = AllMethods();
   // changeColor(bool changed) {
   //   setState(() {
   //     onClicked = changed;
@@ -91,11 +91,11 @@ class _MainNewsViewState extends State<MainNewsView> {
                       setState(() {
                         onClicked = !onClicked;
                         if (onClicked) {
-                          allMethods.addToBookmark({
-                            "imageUrl": widget.imageUrl,
+                          AllMethods.addToBookmark({
+                            "media": widget.imageUrl,
                             "topic": widget.topic,
-                            "newsDate": widget.newsDate,
-                            "newsTime": widget.newsTime,
+                            "published_date": widget.newsDate,
+                            // "published_date": widget.newsTime,
                             "title": widget.title,
                             "author": widget.author,
                             "rights": widget.rights,
@@ -104,14 +104,14 @@ class _MainNewsViewState extends State<MainNewsView> {
                           // onClicked = true;
 
                           print(
-                              "bookmark added with the total of: ${allMethods.bookMarkList.length}");
+                              "bookmark added with the total of: ${AllMethods.bookMarkList.length}");
                         } else {
                           print("in");
-                          allMethods.removeFromBookmark({
-                            "imageUrl": widget.imageUrl,
+                          AllMethods.removeFromBookmark({
+                            "media": widget.imageUrl,
                             "topic": widget.topic,
-                            "newsDate": widget.newsDate,
-                            "newsTime": widget.newsTime,
+                            "published_date": widget.newsDate,
+                            // "published_date": widget.newsTime,
                             "title": widget.title,
                             "author": widget.author,
                             "rights": widget.rights,
@@ -120,7 +120,7 @@ class _MainNewsViewState extends State<MainNewsView> {
                           // onClicked = false;
 
                           print(
-                              "bookmark removed with the total of: ${allMethods.bookMarkList.length}");
+                              "bookmark removed with the total of: ${AllMethods.bookMarkList.length}");
                         }
                         // print(allMethods.bookMarkList.length);
                       });
@@ -225,10 +225,9 @@ class _MainNewsViewState extends State<MainNewsView> {
                         const SizedBox(
                           height: 15,
                         ),
-                        SingleChildScrollView(
-                          // clipBehavior: Clip.none,
-                          child: Container(
-                            height: MediaQuery.of(context).size.height,
+                        Container(
+                          height: MediaQuery.of(context).size.height,
+                          child: SingleChildScrollView(
                             child: AppText.body1(
                               widget.summary,
                               // "htklaklakladkidoifjdfjadklakmdfkmkfmls"

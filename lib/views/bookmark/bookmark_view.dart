@@ -14,7 +14,7 @@ class BookmarkView extends StatefulWidget {
 }
 
 class _BookmarkViewState extends State<BookmarkView> {
-  AllMethods allMethods = AllMethods();
+  // AllMethods allMethods = AllMethods();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class _BookmarkViewState extends State<BookmarkView> {
               padding: EdgeInsets.zero,
               children: [
                 const SizedBox(height: 22.0),
-                allMethods.bookMarkList.isEmpty
+                AllMethods.bookMarkList.isEmpty
                     ? Center(
                         child: Column(
                           children: [
@@ -55,7 +55,7 @@ class _BookmarkViewState extends State<BookmarkView> {
                         child: ListView.builder(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
-                            itemCount: allMethods.bookMarkList.length,
+                            itemCount: AllMethods.bookMarkList.length,
                             itemBuilder: ((context, index) {
                               return Row(
                                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -70,14 +70,15 @@ class _BookmarkViewState extends State<BookmarkView> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: CachedNetworkImage(
-                                      imageUrl: allMethods.bookMarkList[index]
+                                      imageUrl: AllMethods.bookMarkList[index]
                                                   ["media"] ==
                                               ""
                                           ? Api.noImage
-                                          // : allMethods.newsSearch[index]["media"]
+                                          // : AllMethods.bookMarkList[index]
+                                          //             ["media"]
                                           //         .contains("?p=twitter")
                                           //     ? Api.noImage
-                                          : allMethods.bookMarkList[index]
+                                          : AllMethods.bookMarkList[index]
                                                   ["media"] ??
                                               Api.noImage,
                                       // "https://images.pexels.com/photos/3064079/pexels-photo-3064079.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -87,7 +88,7 @@ class _BookmarkViewState extends State<BookmarkView> {
                                   const SizedBox(width: 15.0),
                                   Expanded(
                                     child: AppText.body1(
-                                      allMethods.bookMarkList[index]["title"],
+                                      AllMethods.bookMarkList[index]["title"],
                                       // "At least 14 killed , including 7\n"
                                       // "children, after floods in landsides\n"
                                       // "in Brazil's Rio de Janeiro state.",
@@ -114,7 +115,7 @@ class _BookmarkViewState extends State<BookmarkView> {
                                             MaterialPageRoute(
                                               builder: (context) =>
                                                   MainNewsView(
-                                                imageUrl: allMethods
+                                                imageUrl: AllMethods
                                                                 .bookMarkList[
                                                             index]["media"] ==
                                                         ""
@@ -122,28 +123,28 @@ class _BookmarkViewState extends State<BookmarkView> {
                                                     // : allMethods.newsSearch[index]["media"]
                                                     //         .contains("?p=twitter")
                                                     //     ? Api.noImage
-                                                    : allMethods.bookMarkList[
+                                                    : AllMethods.bookMarkList[
                                                             index]["media"] ??
                                                         Api.noImage,
-                                                topic: allMethods
+                                                topic: AllMethods
                                                         .bookMarkList[index]
                                                     ["topic"],
-                                                newsDate: allMethods
+                                                newsDate: AllMethods
                                                         .bookMarkList[index]
                                                     ["published_date"],
-                                                newsTime: allMethods
+                                                newsTime: AllMethods
                                                         .bookMarkList[index]
                                                     ["published_date"],
-                                                title: allMethods
+                                                title: AllMethods
                                                         .bookMarkList[index]
                                                     ["title"],
-                                                author: allMethods
+                                                author: AllMethods
                                                         .bookMarkList[index]
                                                     ["author"],
-                                                rights: allMethods
+                                                rights: AllMethods
                                                         .bookMarkList[index]
                                                     ["rights"],
-                                                summary: allMethods
+                                                summary: AllMethods
                                                         .bookMarkList[index]
                                                     ["summary"],
                                               ),
