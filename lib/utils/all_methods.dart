@@ -15,6 +15,7 @@ class AllMethods {
   List<Map<String, dynamic>> breakingNews = [];
   List<Map<String, dynamic>> newsSearch = [];
   static List<Map<String, dynamic>> bookMarkList = [];
+  static TextEditingController searchController = TextEditingController();
   // getTrendingNews({required Function() toSetState}) async {
   //   toSetState();
   //   // getBreakingNews(toSetState: toSetState);

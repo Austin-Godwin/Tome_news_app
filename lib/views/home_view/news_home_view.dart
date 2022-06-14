@@ -16,14 +16,14 @@ class _NewsHomeViewState extends State<NewsHomeView> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 2), () {
       allMethods.getTrendingNews(
           context: context,
           toSetState: () {
             setState(() {});
           });
     });
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 4), () {
       allMethods.getBreakingNews(
           context: context,
           toSetState: () {
