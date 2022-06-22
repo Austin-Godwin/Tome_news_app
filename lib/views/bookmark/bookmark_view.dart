@@ -138,6 +138,11 @@ class _BookmarkViewState extends State<BookmarkView> {
                                                 title: AllMethods
                                                         .bookMarkList[index]
                                                     ["title"],
+                                                fromBookMark: true,
+                                                // icon: AllMethods.onClicked
+                                                //     ? Icons.bookmark_add_rounded
+                                                //     : Icons
+                                                //         .bookmark_add_outlined,
                                                 author: AllMethods
                                                         .bookMarkList[index]
                                                     ["author"],

@@ -16,6 +16,7 @@ class AllMethods {
   List<Map<String, dynamic>> newsSearch = [];
   static List<Map<String, dynamic>> bookMarkList = [];
   static TextEditingController searchController = TextEditingController();
+  // static bool onClicked = false;
   // getTrendingNews({required Function() toSetState}) async {
   //   toSetState();
   //   // getBreakingNews(toSetState: toSetState);
@@ -48,11 +49,12 @@ class AllMethods {
     } else if (response.status == Status.error) {
       final snackBar = SnackBar(
         backgroundColor: Colors.red,
-        content: response.data,
-        // AppText.body2(
-        //   response.data,
-        //   color: Colors.white,
-        // ),
+        content:
+            // response.data,
+            AppText.body2(
+          response.data,
+          color: Colors.white,
+        ),
         duration: const Duration(seconds: 6),
       );
       ScaffoldMessenger.of(context!).showSnackBar(snackBar);
@@ -96,11 +98,10 @@ class AllMethods {
     } else if (response.status == Status.error) {
       final snackBar = SnackBar(
         backgroundColor: Colors.red,
-        content: response.data,
-        // AppText.body2(
-        //   response.data,
-        //   color: Colors.white,
-        // ),
+        content: AppText.body2(
+          response.data,
+          color: Colors.white,
+        ),
         duration: const Duration(seconds: 6),
       );
       ScaffoldMessenger.of(context!).showSnackBar(snackBar);

@@ -28,43 +28,115 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(0),
-              child: IconButton(
-                padding: const EdgeInsets.all(0),
-                alignment: Alignment.centerRight,
-                icon: (_isFavorited
-                    ? const Icon(Icons.star)
-                    : const Icon(Icons.star_border)),
-                color: Colors.red[500],
-                onPressed: _toggleFavorite,
+      body: ListView(
+        children: [
+          Stack(
+            // clipBehavior: Clip.none,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(0),
+                    child: IconButton(
+                      padding: const EdgeInsets.all(0),
+                      alignment: Alignment.centerRight,
+                      icon: (_isFavorited
+                          ? const Icon(Icons.star)
+                          : const Icon(Icons.star_border)),
+                      color: Colors.red[500],
+                      onPressed: _toggleFavorite,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 18,
+                    child: SizedBox(
+                      child: Text('$_favoriteCount'),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FavoriteWidget2(
+                                      text: _favoriteCount,
+                                      icon: _isFavorited
+                                          ? Icons.star
+                                          : Icons.star_border,
+                                    )));
+                      },
+                      icon: Icon(Icons.chevron_right_rounded))
+                ],
               ),
-            ),
-            SizedBox(
-              width: 18,
-              child: SizedBox(
-                child: Text('$_favoriteCount'),
+              Positioned(
+                top: 50,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(0),
+                      child: IconButton(
+                        padding: const EdgeInsets.all(0),
+                        alignment: Alignment.centerRight,
+                        icon: (_isFavorited
+                            ? const Icon(Icons.star)
+                            : const Icon(Icons.star_border)),
+                        color: Colors.red[500],
+                        onPressed: _toggleFavorite,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 18,
+                      child: SizedBox(
+                        child: Text('$_favoriteCount'),
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FavoriteWidget2(
+                                        text: _favoriteCount,
+                                        icon: _isFavorited
+                                            ? Icons.star
+                                            : Icons.star_border,
+                                      )));
+                        },
+                        icon: Icon(Icons.chevron_right_rounded))
+                  ],
+                ),
               ),
-            ),
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => FavoriteWidget2(
-                                text: _favoriteCount,
-                                icon: _isFavorited
-                                    ? Icons.star
-                                    : Icons.star_border,
-                              )));
-                },
-                icon: Icon(Icons.chevron_right_rounded))
-          ],
-        ),
+              Positioned(
+                // top: 46,
+                child: Container(
+                  height: 50,
+                  child: SingleChildScrollView(
+                    child: Text("dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"),
+                  ),
+                ),
+              )
+            ],
+          )
+        ],
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../../constants/api.dart';
+// import '../../../utils/all_methods.dart';
 import '../../main_news_view.dart';
 import 'breaking_news_card.dart';
 
@@ -29,6 +30,9 @@ class BreakingNewsItems extends StatelessWidget {
                       newsDate: breakingNews[index]["published_date"],
                       newsTime: breakingNews[index]["published_date"],
                       title: breakingNews[index]["title"],
+                      // icon: AllMethods.onClicked
+                      //       ? Icons.bookmark_add_rounded
+                      //       : Icons.bookmark_add_outlined,
                       author: breakingNews[index]["author"] == ""
                           ? "Annonymous"
                           : breakingNews[index]["author"] ?? "Annonymous",

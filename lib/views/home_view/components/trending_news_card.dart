@@ -20,7 +20,7 @@ class TrendingNewsCard extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       margin: const EdgeInsets.only(left: 15),
       width: 215,
-      // height: 150,
+      // height: 280,
       decoration: BoxDecoration(
           color: const Color(0xFF2A2428),
           borderRadius: BorderRadius.circular(20.0)),

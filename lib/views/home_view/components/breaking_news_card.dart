@@ -27,7 +27,7 @@ class BreakingNewsCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 180,
+              height: 170,
               clipBehavior: Clip.hardEdge,
               margin: const EdgeInsets.only(left: 15),
               width: 215,

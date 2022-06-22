@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:tomel_news_app/utils/all_methods.dart';
 import '../../../constants/api.dart';
 import '../../main_news_view.dart';
 import 'trending_news_card.dart';
@@ -30,6 +31,9 @@ class TrendingNewsItems extends StatelessWidget {
                       newsDate: trendingNews[index]["published_date"],
                       newsTime: trendingNews[index]["published_date"],
                       title: trendingNews[index]["title"],
+                      // icon: AllMethods.onClicked
+                      //     ? Icons.bookmark_add_rounded
+                      //     : Icons.bookmark_add_outlined,
                       author: trendingNews[index]["author"] == ""
                           ? "Annonymous"
                           : trendingNews[index]["author"] ?? "Annonymous",

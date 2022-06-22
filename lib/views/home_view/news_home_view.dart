@@ -60,7 +60,7 @@ class _NewsHomeViewState extends State<NewsHomeView> {
                 const SizedBox(height: 22.0),
                 SizedBox(
                   // padding: EdgeInsets.only(left: 10),
-                  height: MediaQuery.of(context).size.height / 3,
+                  height: 280,
                   child: allMethods.trendingNews.isEmpty
                       ? const Center(
                           child: CircularProgressIndicator(),
@@ -78,7 +78,7 @@ class _NewsHomeViewState extends State<NewsHomeView> {
                 const SizedBox(height: 22.0),
                 SizedBox(
                   // padding: EdgeInsets.only(left: 10),
-                  height: MediaQuery.of(context).size.height / 2.5,
+                  height: 280,
                   child: allMethods.breakingNews.isEmpty
                       ? const Center(
                           child: CircularProgressIndicator(),

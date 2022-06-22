@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:tomel_news_app/constants/api.dart';
+// import 'package:intl/intl.dart';
+// import 'package:tomel_news_app/constants/api.dart';
 import 'package:tomel_news_app/utils/all_methods.dart';
 import 'package:tomel_news_app/utils/text.dart';
+import 'package:tomel_news_app/widgets/author_profile.dart';
+import 'package:tomel_news_app/widgets/news_description.dart';
 
 class MainNewsView extends StatefulWidget {
   final String imageUrl;
@@ -11,6 +13,7 @@ class MainNewsView extends StatefulWidget {
   final String newsDate;
   final String newsTime;
   final String title;
+  final bool? fromBookMark;
   // final String profileImageurl;
   final String? author;
   final String rights;
@@ -22,6 +25,7 @@ class MainNewsView extends StatefulWidget {
     required this.newsDate,
     required this.newsTime,
     required this.title,
+    this.fromBookMark,
     // required this.profileImageurl,
     required this.author,
     required this.rights,
@@ -34,12 +38,12 @@ class MainNewsView extends StatefulWidget {
 
 class _MainNewsViewState extends State<MainNewsView> {
   bool onClicked = false;
-  // final allMethods = AllMethods();
-  // changeColor(bool changed) {
-  //   setState(() {
-  //     onClicked = changed;
-  //   });
-  // }
+
+  @override
+  void initState() {
+    widget.fromBookMark == null ? false : true;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +52,17 @@ class _MainNewsViewState extends State<MainNewsView> {
         child: ListView(
           children: [
             Stack(
+              // alignment: AlignmentDirectional.bottomEnd,
               clipBehavior: Clip.none,
+
               children: [
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 2.5,
+                  height: MediaQuery.of(context).size.height,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 300,
                   child: CachedNetworkImage(
                     imageUrl: widget.imageUrl,
                     // "https://images.pexels.com/photos/7005682/pexels-photo-7005682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -61,28 +71,13 @@ class _MainNewsViewState extends State<MainNewsView> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 2.2,
+                  height: 300,
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(
                       0.3,
                     ),
                   ),
-                  // height: MediaQuery.of(context).size.height / 2.2,
-                  // child: CachedNetworkImage(
-                  //   imageUrl:
-                  //       "https://images.pexels.com/photos/7005682/pexels-photo-7005682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                  //   fit: BoxFit.cover,
-                  // ),
                 ),
-                //             required this.imageUrl,
-                // required this.topic,
-                // required this.newsDate,
-                // required this.newsTime,
-                // required this.title,
-                // // required this.profileImageurl,
-                // required this.author,
-                // required this.rights,
-                // required this.summary,
                 Positioned(
                   // top: 10,
                   right: 15,
@@ -101,6 +96,7 @@ class _MainNewsViewState extends State<MainNewsView> {
                             "rights": widget.rights,
                             "summary": widget.summary,
                           });
+                          // widget.fromBookMark = true;
                           // onClicked = true;
 
                           print(
@@ -125,12 +121,38 @@ class _MainNewsViewState extends State<MainNewsView> {
                         // print(allMethods.bookMarkList.length);
                       });
                     },
-                    icon: Icon(
-                        onClicked
-                            ? Icons.bookmark_add_rounded
-                            : Icons.bookmark_add_outlined,
-                        size: 35.0,
-                        color: Colors.white),
+                    icon: widget.fromBookMark == true
+                        ? const SizedBox()
+                        : Icon(
+                            // widget.icon,
+                            onClicked
+                                ? Icons.bookmark_add_rounded
+                                : Icons.bookmark_add_outlined,
+                            size: 35.0,
+                            color: Colors.white,
+                          ),
+
+                    // Visibility(
+                    //     visible: false,
+                    //     maintainState: true,
+                    //     child: Icon(
+                    //         // widget.icon,
+                    //         onClicked
+                    //             ? Icons.bookmark_add_rounded
+                    //             : Icons.bookmark_add_outlined,
+                    //         size: 35.0,
+                    //         color: Colors.white),
+                    //   )
+                    // : Visibility(
+                    //     // visible: false,
+                    //     child: Icon(
+                    //         // widget.icon,
+                    //         onClicked
+                    //             ? Icons.bookmark_add_rounded
+                    //             : Icons.bookmark_add_outlined,
+                    //         size: 35.0,
+                    //         color: Colors.white),
+                    //   ),
                   ),
                 ),
                 Positioned(
@@ -148,51 +170,25 @@ class _MainNewsViewState extends State<MainNewsView> {
                   ),
                 ),
                 Positioned(
+                  height: 600,
                   top: 280,
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+                    // height: 90,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 30),
                     width: MediaQuery.of(context).size.width,
-                    // height: MediaQuery.of(context).size.height / 1.5,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: Colors.white),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.white,
+                    ),
+                    child: ListView(
+                      // physics: const NeverScrollableScrollPhysics(),
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  color: Colors.red),
-                              child: AppText.button(
-                                widget.topic,
-                                // "Entertainment",
-                                color: Colors.white,
-                              ),
-                            ),
-                            const Spacer(),
-                            AppText.body2(
-                              DateFormat("dd MMM yyyy")
-                                  .format(DateTime.parse(widget.newsDate)),
-                              // "1st June 2022",
-                              color: Colors.red.shade900,
-                            ),
-                            const SizedBox(width: 5.0),
-                            CircleAvatar(
-                              radius: 2.0,
-                              backgroundColor: Colors.red.shade900,
-                            ),
-                            const SizedBox(width: 5.0),
-                            AppText.body2(
-                              DateFormat("hh:mm a")
-                                  .format(DateTime.parse(widget.newsTime)),
-                              // "12:44pm",
-                              color: Colors.red.shade900,
-                            ),
-                          ],
+                        NewsDescription(
+                          topic: widget.topic,
+                          date: widget.newsDate,
+                          time: widget.newsTime,
                         ),
                         const SizedBox(
                           height: 20,
@@ -205,59 +201,18 @@ class _MainNewsViewState extends State<MainNewsView> {
                         const SizedBox(
                           height: 15,
                         ),
-                        Row(
-                          children: [
-                            const CircleAvatar(
-                              radius: 15.0,
-                              backgroundImage: CachedNetworkImageProvider(
-                                Api.noProfileImage,
-                                // "https://images.pexels.com/photos/4571943/pexels-photo-4571943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            Expanded(
-                                child: AppText.caption(
-                                    "By ${widget.author}, ${widget.rights}"))
-                          ],
+                        AuthorProfile(
+                          author: widget.author,
+                          rights: widget.rights,
                         ),
                         const SizedBox(
                           height: 15,
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height,
+                        SizedBox(
+                          height: 300,
                           child: SingleChildScrollView(
                             child: AppText.body1(
                               widget.summary,
-                              // "htklaklakladkidoifjdfjadklakmdfkmkfmls"
-                              // "jdskjasjdkjksjdjsaiuaiudiusdiadiudauiuia"
-                              // "jkasdjcacinjacnkjnancajkcanckjnakjknackjk"
-                              // "lkadnafjioiiasdoiasoiodisdiodosdiodsiisdii"
-                              // "akjfaufhduishiuaisdudsiausdaosapioiosiifiif"
-                              // "jdskjasjdkjksjdjsaiuaiudiusdiadiudauiuia"
-                              // "jkasdjcacinjacnkjnancajkcanckjnakjknackjk"
-                              // "sjkdkajjadk.\n"
-                              // "\n"
-                              // "sadjfajiasojaifdasfjifjuifaojoiajfijikdfji"
-                              // "asfhafukaskasjfjhasjkfdjhfhadsaiuweiwueiej"
-                              // "aksdfhuashisdidhaalasjklcamlcmlkcjcajojioo"
-                              // "jasdfhjsahfhlusihuafihauhuuchuhcusuisaiuai"
-                              // "aksdfhusadhaufufudaichuchjcijioajiajcasoiji"
-                              // "kjdfahdfajkfafahkaffhiueioioqwifjafklalk;la"
-                              // "sadjfajiasojaifdasfjifjuifaojoiajfijikdfji"
-                              // "asfhafukaskasjfjhasjkfdjhfhadsaiuweiwueiej"
-                              // "aksdfhuashisdidhaalasjklcamlcmlkcjcajojioo.\n"
-                              // "\n"
-                              // "sadjfajiasojaifdasfjifjuifaojoiajfijikdfji"
-                              // "asfhafukaskasjfjhasjkfdjhfhadsaiuweiwueiej"
-                              // "aksdfhuashisdidhaalasjklcamlcmlkcjcajojioo"
-                              // "jasdfhjsahfhlusihuafihauhuuchuhcusuisaiuai"
-                              // "aksdfhusadhaufufudaichuchjcijioajiajcasoiji"
-                              // "kjdfahdfajkfafahkaffhiueioioqwifjafklalk;la"
-                              // "sadjfajiasojaifdasfjifjuifaojoiajfijikdfji"
-                              // "asfhafukaskasjfjhasjkfdjhfhadsaiuweiwueiej"
-                              // "aksdfhuashisdidhaalasjklcamlcmlkcjcajojioo.",
                               multiText: true,
                             ),
                           ),
@@ -265,7 +220,7 @@ class _MainNewsViewState extends State<MainNewsView> {
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],
