@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/text.dart';
+import '../../../widgets/skeleton.dart';
 
 class TrendingNewsCard extends StatelessWidget {
   final Function() onTap;
@@ -82,3 +83,5 @@ class TrendingNewsCard extends StatelessWidget {
     );
   }
 }
+
+

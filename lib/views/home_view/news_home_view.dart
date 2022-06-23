@@ -61,12 +61,15 @@ class _NewsHomeViewState extends State<NewsHomeView> {
                 SizedBox(
                   // padding: EdgeInsets.only(left: 10),
                   height: 280,
-                  child: allMethods.trendingNews.isEmpty
-                      ? const Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : TrendingNewsItems(
-                          trendingNews: allMethods.trendingNews),
+                  child:
+                      // allMethods.trendingNews.isEmpty
+                      //     ? const Center(
+                      //         child: CircularProgressIndicator(),
+                      //       )
+                      //     :
+                      TrendingNewsItems(
+                    trendingNews: allMethods.trendingNews,
+                  ),
                 ),
                 const SizedBox(height: 30.0),
                 Padding(
@@ -79,13 +82,15 @@ class _NewsHomeViewState extends State<NewsHomeView> {
                 SizedBox(
                   // padding: EdgeInsets.only(left: 10),
                   height: 280,
-                  child: allMethods.breakingNews.isEmpty
-                      ? const Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : BreakingNewsItems(
-                          breakingNews: allMethods.breakingNews,
-                        ),
+                  child:
+                      // allMethods.breakingNews.isEmpty
+                      //     ? const Center(
+                      //         child: CircularProgressIndicator(),
+                      //       )
+                      //     :
+                      BreakingNewsItems(
+                    breakingNews: allMethods.breakingNews,
+                  ),
                 ),
               ],
             ),

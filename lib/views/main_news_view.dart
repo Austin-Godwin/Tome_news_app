@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-// import 'package:intl/intl.dart';
-// import 'package:tomel_news_app/constants/api.dart';
 import 'package:tomel_news_app/utils/all_methods.dart';
 import 'package:tomel_news_app/utils/text.dart';
 import 'package:tomel_news_app/widgets/author_profile.dart';
@@ -13,19 +11,19 @@ class MainNewsView extends StatefulWidget {
   final String newsDate;
   final String newsTime;
   final String title;
-  final bool? fromBookMark;
+  bool? bookMarked;
   // final String profileImageurl;
   final String? author;
   final String rights;
   final String summary;
-  const MainNewsView({
+  MainNewsView({
     Key? key,
     required this.imageUrl,
     required this.topic,
     required this.newsDate,
     required this.newsTime,
     required this.title,
-    this.fromBookMark,
+    this.bookMarked,
     // required this.profileImageurl,
     required this.author,
     required this.rights,
@@ -41,7 +39,7 @@ class _MainNewsViewState extends State<MainNewsView> {
 
   @override
   void initState() {
-    widget.fromBookMark == null ? false : true;
+    widget.bookMarked = widget.bookMarked ?? false;
     super.initState();
   }
 
@@ -84,8 +82,8 @@ class _MainNewsViewState extends State<MainNewsView> {
                   child: IconButton(
                     onPressed: () {
                       setState(() {
-                        onClicked = !onClicked;
-                        if (onClicked) {
+                        widget.bookMarked = !widget.bookMarked!;
+                        if (widget.bookMarked!) {
                           AllMethods.addToBookmark({
                             "media": widget.imageUrl,
                             "topic": widget.topic,
@@ -96,11 +94,13 @@ class _MainNewsViewState extends State<MainNewsView> {
                             "rights": widget.rights,
                             "summary": widget.summary,
                           });
+
                           // widget.fromBookMark = true;
                           // onClicked = true;
 
                           print(
                               "bookmark added with the total of: ${AllMethods.bookMarkList.length}");
+                          // widget.bookMarked = false;
                         } else {
                           print("in");
                           AllMethods.removeFromBookmark({
@@ -121,16 +121,18 @@ class _MainNewsViewState extends State<MainNewsView> {
                         // print(allMethods.bookMarkList.length);
                       });
                     },
-                    icon: widget.fromBookMark == true
-                        ? const SizedBox()
-                        : Icon(
-                            // widget.icon,
-                            onClicked
-                                ? Icons.bookmark_add_rounded
-                                : Icons.bookmark_add_outlined,
-                            size: 35.0,
-                            color: Colors.white,
-                          ),
+                    icon:
+                        // widget.fromBookMark == true
+                        //     ? const SizedBox()
+                        // :
+                        Icon(
+                      // widget.icon,
+                      widget.bookMarked!
+                          ? Icons.bookmark_add_rounded
+                          : Icons.bookmark_add_outlined,
+                      size: 35.0,
+                      color: Colors.white,
+                    ),
 
                     // Visibility(
                     //     visible: false,
@@ -160,7 +162,7 @@ class _MainNewsViewState extends State<MainNewsView> {
                   // left: 15,
                   child: IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pop(context, widget.bookMarked);
                     },
                     icon: const Icon(
                       Icons.chevron_left_rounded,

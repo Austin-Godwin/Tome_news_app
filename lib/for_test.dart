@@ -113,24 +113,26 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                 child: Container(
                   height: 50,
                   child: SingleChildScrollView(
-                    child: Text("dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
-                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
-                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
-                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
-                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
-                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
-                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
-                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
-                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
-                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
-                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
-                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
-                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
-                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
-                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
-                        "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
-                        "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
-                        ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"),
+                    child: Text(""
+                        // "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        //   "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        //   ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        //   "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        //   "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        //   ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        //   "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        //   "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        //   ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        //   "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        //   "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        //   ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        //   "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        //   "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        //   ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        //   "dkfaklfjaioaladlalksdfkafkllasfllasdk\n"
+                        //   "djfadjflakjfakjklalakllakfkakllaljflakmacm\n"
+                        //   ",.dksjfklafm,asdjalkdlam,djaldjadlafjklasla\n"
+                        ),
                   ),
                 ),
               )
