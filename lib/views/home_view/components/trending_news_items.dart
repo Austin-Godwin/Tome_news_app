@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:tomel_news_app/views/home_view/components/trending_news_card_skeleton.dart';
 // import 'package:tomel_news_app/utils/all_methods.dart';
 import '../../../constants/api.dart';
@@ -22,7 +23,11 @@ class TrendingNewsItems extends StatelessWidget {
       itemCount: trendingNews.isEmpty ? 5 : trendingNews.length,
       itemBuilder: ((context, index) {
         return trendingNews.isEmpty
-            ? const TrendingNewsCardSkeleton()
+            ? Shimmer.fromColors(
+                baseColor: Colors.black.withOpacity(0.8),
+                highlightColor: Colors.grey.shade500,
+                child: const TrendingNewsCardSkeleton(),
+              )
             : TrendingNewsCard(
                 onTap: () {
                   Navigator.push(

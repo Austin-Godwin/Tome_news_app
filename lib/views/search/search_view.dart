@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tomel_news_app/utils/all_methods.dart';
 import 'package:tomel_news_app/views/search/components/news_search_items.dart';
+import 'package:tomel_news_app/views/search/components/news_search_items_skeleton.dart';
 import 'package:tomel_news_app/views/search/components/search_container.dart';
 
 class SearchView extends StatefulWidget {
@@ -14,6 +15,7 @@ class SearchView extends StatefulWidget {
 
 class _SearchViewState extends State<SearchView> {
   final allMethods = AllMethods();
+  String searched = "g";
   @override
   Widget build(BuildContext context) {
     // TextEditingController searchController = TextEditingController();
@@ -32,16 +34,21 @@ class _SearchViewState extends State<SearchView> {
                       toSetState: () {
                         setState(() {});
                       });
+                  allMethods.newsSearch.clear();
                   AllMethods.searchController.clear();
+                  searched = AllMethods.searchController.text;
                 });
               },
             ),
             const SizedBox(height: 15.0),
 
             Expanded(
-              child: NewSearchItems(
-                newsSearch: allMethods.newsSearch,
-              ),
+              child: allMethods.newsSearch.isEmpty &&
+                      searched == AllMethods.searchController.text
+                  ? const NewSearchItemsSkeleton()
+                  : NewSearchItems(
+                      newsSearch: allMethods.newsSearch,
+                    ),
             )
           ],
         ),

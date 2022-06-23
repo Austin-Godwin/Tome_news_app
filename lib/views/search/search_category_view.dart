@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tomel_news_app/utils/all_methods.dart';
 import 'package:tomel_news_app/views/search/components/dummy_search_container.dart';
 import 'package:tomel_news_app/views/search/components/news_search_items.dart';
+import 'package:tomel_news_app/views/search/components/news_search_items_skeleton.dart';
 import 'package:tomel_news_app/widgets/custom_app_bar.dart';
 import '../../constants/default_list.dart';
 import '../../utils/text.dart';
@@ -18,6 +19,7 @@ class _SearchCategoryViewState extends State<SearchCategoryView> {
   final allMethods = AllMethods();
   int selectedindex = 0;
   bool isBusy = false;
+  String categorySearch = "world";
   @override
   void initState() {
     allMethods.getNewsSearch(
@@ -70,6 +72,8 @@ class _SearchCategoryViewState extends State<SearchCategoryView> {
                                     setState(() {});
                                   });
                               isBusy = false;
+                              allMethods.newsSearch.clear();
+                              categorySearch = DefaultList.tabList[index];
                             });
                           },
                           text: DefaultList.tabList[index],
@@ -80,9 +84,11 @@ class _SearchCategoryViewState extends State<SearchCategoryView> {
                       })),
                 ),
                 const SizedBox(height: 20.0),
-                NewSearchItems(
-                  newsSearch: allMethods.newsSearch,
-                ),
+                allMethods.newsSearch.isEmpty
+                    ? const NewSearchItemsSkeleton()
+                    : NewSearchItems(
+                        newsSearch: allMethods.newsSearch,
+                      ),
               ],
             ),
           ),

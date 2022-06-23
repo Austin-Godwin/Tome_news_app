@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:tomel_news_app/views/home_view/components/breaking_news_card_skeleton.dart';
 import '../../../constants/api.dart';
@@ -19,7 +20,11 @@ class BreakingNewsItems extends StatelessWidget {
       itemCount: breakingNews.isEmpty ? 5 : breakingNews.length,
       itemBuilder: ((context, index) {
         return breakingNews.isEmpty
-            ? const BreakingNewsCardSkeleton()
+            ? Shimmer.fromColors(
+                baseColor: Colors.black.withOpacity(0.8),
+                highlightColor: Colors.grey.shade500,
+                child: const BreakingNewsCardSkeleton(),
+              )
             : BreakingNewsCard(
                 onTap: () {
                   Navigator.push(

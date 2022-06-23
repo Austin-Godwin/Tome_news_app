@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../../../constants/api.dart';
-// import '../../../utils/all_methods.dart';
 import '../../../widgets/news_card.dart';
 import '../../main_news_view.dart';
 
@@ -17,7 +15,7 @@ class NewSearchItems extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           itemCount: newsSearch.length,
           itemBuilder: ((context, index) {
-            return NewsCard(
+            return  NewsCard(
               imageUrl: newsSearch[index]["media"] == ""
                   ? Api.noImage
                   // : allMethods.newsSearch[index]["media"]
