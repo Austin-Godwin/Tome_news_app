@@ -12,7 +12,9 @@ class VisitNewsLink extends StatefulWidget {
 }
 
 class _VisitNewsLinkState extends State<VisitNewsLink> {
+  late WebViewController controller;
   var loadingPercentage = 0;
+  bool isLoading = true;
   @override
   void initState() {
     // This Enables Virtual display of the webview
@@ -28,25 +30,38 @@ class _VisitNewsLinkState extends State<VisitNewsLink> {
       body: SafeArea(
         child: Stack(
           children: [
-            WebView(
-              initialUrl: widget.newsLink,
-              onPageStarted: (url) {
-                setState(() {
-                  loadingPercentage = 0;
-                });
+            WillPopScope(
+              onWillPop: () async {
+                if (await controller.canGoBack()) {
+                  controller.goBack();
+                  return false;
+                } else {
+                  return true;
+                }
               },
-              onProgress: (progress) {
-                setState(() {
-                  loadingPercentage = progress;
-                });
-              },
-              onPageFinished: (url) {
-                setState(() {
-                  loadingPercentage = 100;
-                });
-              },
-              javascriptMode: JavascriptMode.unrestricted,
-              // gestureNavigationEnabled: true,
+              child: WebView(
+                initialUrl: widget.newsLink,
+                onPageStarted: (url) {
+                  setState(() {
+                    loadingPercentage = 0;
+                  });
+                },
+                onProgress: (progress) {
+                  setState(() {
+                    loadingPercentage = progress;
+                  });
+                },
+                onPageFinished: (url) {
+                  setState(() {
+                    loadingPercentage = 100;
+                  });
+                },
+                onWebViewCreated: (controller) {
+                  this.controller = controller;
+                },
+                javascriptMode: JavascriptMode.unrestricted,
+                gestureNavigationEnabled: true,
+              ),
             ),
             if (loadingPercentage < 100)
               LinearProgressIndicator(
