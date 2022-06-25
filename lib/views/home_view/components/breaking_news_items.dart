@@ -34,6 +34,7 @@ class BreakingNewsItems extends StatelessWidget {
                             imageUrl: breakingNews[index]["media"] == ""
                                 ? Api.noImage
                                 : breakingNews[index]["media"] ?? Api.noImage,
+                            link: breakingNews[index]["link"],
                             topic: breakingNews[index]["topic"],
                             newsDate: breakingNews[index]["published_date"],
                             newsTime: breakingNews[index]["published_date"],

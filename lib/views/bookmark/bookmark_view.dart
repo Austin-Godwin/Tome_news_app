@@ -126,6 +126,9 @@ class _BookmarkViewState extends State<BookmarkView> {
                                                     : AllMethods.bookMarkList[
                                                             index]["media"] ??
                                                         Api.noImage,
+                                                link: AllMethods
+                                                        .bookMarkList[index]
+                                                    ["link"],
                                                 topic: AllMethods
                                                         .bookMarkList[index]
                                                     ["topic"],

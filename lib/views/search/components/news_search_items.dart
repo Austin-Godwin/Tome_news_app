@@ -15,7 +15,7 @@ class NewSearchItems extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           itemCount: newsSearch.length,
           itemBuilder: ((context, index) {
-            return  NewsCard(
+            return NewsCard(
               imageUrl: newsSearch[index]["media"] == ""
                   ? Api.noImage
                   // : allMethods.newsSearch[index]["media"]
@@ -34,6 +34,7 @@ class NewSearchItems extends StatelessWidget {
                           //         .contains("?p=twitter")
                           //     ? Api.noImage
                           : newsSearch[index]["media"] ?? Api.noImage,
+                      link: newsSearch[index]["link"],
                       topic: newsSearch[index]["topic"],
                       newsDate: newsSearch[index]["published_date"],
                       newsTime: newsSearch[index]["published_date"],

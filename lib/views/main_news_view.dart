@@ -2,11 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tomel_news_app/utils/all_methods.dart';
 import 'package:tomel_news_app/utils/text.dart';
+import 'package:tomel_news_app/views/news_webview/visit_news_link.dart';
 import 'package:tomel_news_app/widgets/author_profile.dart';
 import 'package:tomel_news_app/widgets/news_description.dart';
 
 class MainNewsView extends StatefulWidget {
   final String imageUrl;
+  final String link;
   final String topic;
   final String newsDate;
   final String newsTime;
@@ -19,6 +21,7 @@ class MainNewsView extends StatefulWidget {
   MainNewsView({
     Key? key,
     required this.imageUrl,
+    required this.link,
     required this.topic,
     required this.newsDate,
     required this.newsTime,
@@ -56,7 +59,7 @@ class _MainNewsViewState extends State<MainNewsView> {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height / 1.2,
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
@@ -86,6 +89,7 @@ class _MainNewsViewState extends State<MainNewsView> {
                         if (widget.bookMarked!) {
                           AllMethods.addToBookmark({
                             "media": widget.imageUrl,
+                            "link": widget.link,
                             "topic": widget.topic,
                             "published_date": widget.newsDate,
                             // "published_date": widget.newsTime,
@@ -105,6 +109,7 @@ class _MainNewsViewState extends State<MainNewsView> {
                           print("in");
                           AllMethods.removeFromBookmark({
                             "media": widget.imageUrl,
+                            "link": widget.link,
                             "topic": widget.topic,
                             "published_date": widget.newsDate,
                             // "published_date": widget.newsTime,
@@ -133,28 +138,6 @@ class _MainNewsViewState extends State<MainNewsView> {
                       size: 35.0,
                       color: Colors.white,
                     ),
-
-                    // Visibility(
-                    //     visible: false,
-                    //     maintainState: true,
-                    //     child: Icon(
-                    //         // widget.icon,
-                    //         onClicked
-                    //             ? Icons.bookmark_add_rounded
-                    //             : Icons.bookmark_add_outlined,
-                    //         size: 35.0,
-                    //         color: Colors.white),
-                    //   )
-                    // : Visibility(
-                    //     // visible: false,
-                    //     child: Icon(
-                    //         // widget.icon,
-                    //         onClicked
-                    //             ? Icons.bookmark_add_rounded
-                    //             : Icons.bookmark_add_outlined,
-                    //         size: 35.0,
-                    //         color: Colors.white),
-                    //   ),
                   ),
                 ),
                 Positioned(
@@ -172,10 +155,10 @@ class _MainNewsViewState extends State<MainNewsView> {
                   ),
                 ),
                 Positioned(
-                  height: 600,
+                  // height: 600,
                   top: 280,
                   child: Container(
-                    // height: 90,
+                    height: MediaQuery.of(context).size.height,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 25, vertical: 30),
                     width: MediaQuery.of(context).size.width,
@@ -184,10 +167,19 @@ class _MainNewsViewState extends State<MainNewsView> {
                       color: Colors.white,
                     ),
                     child: ListView(
-                      // physics: const NeverScrollableScrollPhysics(),
-                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         NewsDescription(
+                          onTap: () {
+                            print("initializing webview");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    VisitNewsLink(newsLink: widget.link),
+                              ),
+                            );
+                            print("Webview entered");
+                          },
                           topic: widget.topic,
                           date: widget.newsDate,
                           time: widget.newsTime,
@@ -211,14 +203,14 @@ class _MainNewsViewState extends State<MainNewsView> {
                           height: 15,
                         ),
                         SizedBox(
-                          height: 300,
+                          height: 250,
                           child: SingleChildScrollView(
                             child: AppText.body1(
                               widget.summary,
                               multiText: true,
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -228,6 +220,15 @@ class _MainNewsViewState extends State<MainNewsView> {
           ],
         ),
       ),
+      // floatingActionButton: Container(
+      //   height: 50.0,
+      //   width: 100.0,
+      //   color: Colors.red.withOpacity(0.3),
+      //   child: Text(
+      //     "Explore",
+      //     style: TextStyle(color: Colors.white),
+      //   ),
+      // ),
     );
   }
 }

@@ -81,7 +81,7 @@ class _NewsHomeViewState extends State<NewsHomeView> {
                 const SizedBox(height: 22.0),
                 SizedBox(
                   // padding: EdgeInsets.only(left: 10),
-                  height: 280,
+                  height: 266,
                   child:
                       // allMethods.breakingNews.isEmpty
                       //     ? const Center(
